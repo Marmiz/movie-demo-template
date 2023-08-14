@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Actor {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  movies  Movie[]
+  Profile Profile?
+}
+
+model Director {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  movies Movie[]
+}
+
+model Movie {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  title      String
+  actors     Actor[]
+  director   Director @relation(fields: [directorId], references: [id])
+  directorId Int
+}
+
+model Profile {
+  id            Int     @id @default(autoincrement())
+  bio           String?
+  isOscarWinner Boolean @default(false)
+  actor         Actor   @relation(fields: [actorId], references: [id])
+  actorId       Int     @unique
+}
