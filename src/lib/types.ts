@@ -13,4 +13,10 @@ export type Director = {
 export type Actor = {
   id: number;
   name: string;
+  profile: Profile;
+};
+
+export type Profile = {
+  bio: string;
+  isOscarWinner: boolean;
 };

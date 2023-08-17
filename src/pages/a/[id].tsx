@@ -1,17 +1,20 @@
 import React from "react";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import Layout from "@/components/Layout";
 import prisma from "@/lib/prisma";
-import { Movie as MovieType } from "@/lib/types";
+import { Actor as ActorType } from "@/lib/types";
+import { Actor } from "@/components/Actor";
 
 type Props = {
-  movie: MovieType;
+  actor: ActorType;
 };
 
 const ActorPage: React.FC<Props> = (props) => {
   return (
     <Layout>
-      <main>Actor page</main>
+      <main>
+        <Actor actor={props.actor} />
+      </main>
     </Layout>
   );
 };
@@ -24,12 +27,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   const actorId = parseInt(paramId, 10);
 
-  const movie = await prisma.actor.findUniqueOrThrow({
+  const actor = await prisma.actor.findUniqueOrThrow({
     where: { id: actorId },
-    include: { movies: true },
+    include: { movies: true, profile: true },
   });
   return {
-    props: { movie },
+    props: { actor },
   };
 };
 
