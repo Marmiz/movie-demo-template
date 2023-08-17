@@ -11,7 +11,7 @@ model Actor {
   id      Int      @id @default(autoincrement())
   name    String   @unique
   movies  Movie[]
-  Profile Profile?
+  profile Profile?
 }
 
 model Director {
