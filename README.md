@@ -4,6 +4,13 @@
 
 ### 1. Download example and install dependencies
 
+Clone this repository:
+
+```bash
+git clone https://github.com/Marmiz/movie-demo-template.git
+cd movie-demo-template
+```
+
 Install npm dependencies:
 
 ```
@@ -14,8 +21,14 @@ npm install
 
 Run the following command to create your SQLite database file. This also creates tables that are defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
 
+```bash
+npm run setup
 ```
-npx prisma migrate
+
+Optionally inspect the tables using built in Prisma studio:
+
+```bash
+npm run studio
 ```
 
 ### 3. Start the app
