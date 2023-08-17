@@ -61,6 +61,7 @@ const movieData: Prisma.MovieCreateInput[] = [
 const profileData: Prisma.ProfileCreateInput[] = [
   {
     bio: "Leonardo DiCaprio is an American actor, film producer, and environmentalist. He has often played unconventional roles, particularly in biopics and period films. As of 2019, his films have grossed US$7.2 billion worldwide, and he has placed eight times in annual rankings of the world's highest-paid actors.",
+    isOscarWinner: true,
     actor: { connect: { name: "Leonardo DiCaprio" } },
   },
   {
