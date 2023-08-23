@@ -1,4 +1,4 @@
-# Fullstack Example with Next.js (REST API)
+# Movie Demo Template
 
 ## Getting started
 
