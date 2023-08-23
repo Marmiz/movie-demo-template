@@ -1,8 +1,8 @@
 import React from "react";
 import Layout from "../components/Layout";
-import prisma from "../lib/prisma";
 import { Movie } from "@/lib/types";
 import Link from "next/link";
+import { getMovies } from "@/lib/queries";
 
 type Props = {
   movies: Movie[];
@@ -13,10 +13,10 @@ const HomePage: React.FC<Props> = (props) => {
     <Layout>
       <main>
         <div className="flex h-5 items-center space-x-4 text-sm">
-          {props.movies.map((movie) => (
+          {props.movies.map((movie, idx) => (
             <div key={movie.id}>
               <Link
-                href={`/m/${movie.id}`}
+                href={`/m/${idx}`}
                 className="hover:underline hover:text-primary"
               >
                 {movie.title}
@@ -30,9 +30,7 @@ const HomePage: React.FC<Props> = (props) => {
 };
 
 export const getServerSideProps = async () => {
-  const movies = await prisma.movie.findMany({
-    include: { actors: true, director: true },
-  });
+  const movies = getMovies();
   return {
     props: { movies },
   };

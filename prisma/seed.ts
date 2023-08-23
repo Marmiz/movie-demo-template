@@ -65,11 +65,11 @@ const profileData: Prisma.ProfileCreateInput[] = [
     actor: { connect: { name: "Leonardo DiCaprio" } },
   },
   {
-    bio: null,
+    bio: "Tom Hardy is an English actor and producer. After studying acting at the Drama Centre London, he made his film debut in Ridley Scott's Black Hawk Down (2001). He has since been nominated for the Academy Award for Best Supporting Actor, two Critics' Choice Movie Awards and two BAFTA Awards, receiving the 2011 BAFTA Rising Star Award.",
     actor: { connect: { name: "Tom Hardy" } },
   },
   {
-    bio: "Christopher Edward Nolan CBE is a British-American film director, producer, and screenwriter. His directorial efforts have grossed more than US$5 billion worldwide, garnered 36 Oscar nominations and ten wins.",
+    bio: "Christian Bale is an English actor. Known for his versatility and intensive method acting, he is the recipient of many awards, including an Academy Award and two Golden Globe Awards, and was featured in the Time 100 list of 2011.",
     actor: { connect: { name: "Christian Bale" } },
   },
 ];

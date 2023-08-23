@@ -38,3 +38,39 @@ npm run dev
 ```
 
 The app is now running, navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser to explore its UI.
+
+---
+
+## Issues we will focus on during the demo.
+
+1. Homepage throws an error.
+   Repro step:
+
+   - navigate to http://localhost:3000
+   - observe: An error is thrown.
+
+2. The wrong movie is loaded when navigating from the main menu.
+   Repro step:
+
+- load the homepage.
+- click on "The Revenant".
+- observe: "The Dark Knight" is loaded instead.
+
+4. "The Revenant" page seems incomplete. Actors are missing.
+   Repro step:
+
+   - load the movie's page: http://localhost:3000/m/3
+   - observe: Cast is missing.
+
+5. Navigating to actor page throws an error.
+   Repro step:
+
+   - load the Inception movie: http://localhost:3000/m/1.
+   - Click on "Leonardo DiCaprio".
+   - observe: An error is thrown.
+
+6. "Heath Ledger" page seems to not working.
+   Repro step:
+
+   - load the actor's page: http://localhost:3000/a/4
+   - observe: An error is thrown.

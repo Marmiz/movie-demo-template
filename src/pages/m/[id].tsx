@@ -1,9 +1,9 @@
 import React from "react";
-import { GetServerSideProps } from "next";
+import { GetServerSidePropsContext } from "next";
 import Layout from "@/components/Layout";
-import prisma from "@/lib/prisma";
 import { Movie as MovieType } from "@/lib/types";
 import { Movie } from "@/components/Movie";
+import { getMovieById } from "@/lib/queries";
 
 type Props = {
   movie: MovieType;
@@ -19,7 +19,7 @@ const MoviePage: React.FC<Props> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const paramId = ctx.params?.id;
   if (!paramId || typeof paramId !== "string") {
     throw new Error("No movie ID");
@@ -27,10 +27,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   const movieId = parseInt(paramId, 10);
 
-  const movie = await prisma.movie.findUniqueOrThrow({
-    where: { id: movieId },
-    include: { actors: true, director: true },
-  });
+  const movie = await getMovieById(movieId);
   return {
     props: { movie },
   };

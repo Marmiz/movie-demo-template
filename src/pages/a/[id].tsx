@@ -1,9 +1,9 @@
 import React from "react";
 import { GetServerSidePropsContext } from "next";
 import Layout from "@/components/Layout";
-import prisma from "@/lib/prisma";
 import { Actor as ActorType } from "@/lib/types";
 import { Actor } from "@/components/Actor";
+import { getActorByName } from "@/lib/queries";
 
 type Props = {
   actor: ActorType;
@@ -20,17 +20,12 @@ const ActorPage: React.FC<Props> = (props) => {
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const paramId = ctx.params?.id;
-  if (!paramId || typeof paramId !== "string") {
+  const param = ctx.params?.id;
+  if (!param || typeof param !== "string") {
     throw new Error("No actor ID");
   }
 
-  const actorId = parseInt(paramId, 10);
-
-  const actor = await prisma.actor.findUniqueOrThrow({
-    where: { id: actorId },
-    include: { movies: true, profile: true },
-  });
+  const actor = await getActorByName(param);
   return {
     props: { actor },
   };
