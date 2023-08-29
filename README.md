@@ -56,20 +56,20 @@ The app is now running, navigate to [`http://localhost:3000/`](http://localhost:
 - click on "The Revenant".
 - observe: "The Dark Knight" is loaded instead.
 
-4. "The Revenant" page seems incomplete. Actors are missing.
+3. "The Revenant" page seems incomplete. Actors are missing.
    Repro step:
 
    - load the movie's page: http://localhost:3000/m/3
    - observe: Cast is missing.
 
-5. Navigating to actor page throws an error.
+4. Navigating to actor page throws an error.
    Repro step:
 
    - load the Inception movie: http://localhost:3000/m/1.
    - Click on "Leonardo DiCaprio".
    - observe: An error is thrown.
 
-6. "Heath Ledger" page seems to not working.
+5. "Heath Ledger" page seems to not working.
    Repro step:
 
    - load the actor's page: http://localhost:3000/a/4
